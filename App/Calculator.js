@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
   TextInput
 } from 'react-native';
 
@@ -87,8 +88,15 @@ render(){
         <View>
           <Text style = {styles.resultText}> Result: {this.state.result}</Text>
         </View>
-
+        <View>
+          <Button
+            style={{flex:1, margin:5, fontSize:20}}
+            title="Setting"
+            onPress={() => this.props.navigator.push({id:'BlankPage'})}
+          />
+        </View>
       </View>
+
 
     )
 
