@@ -14,7 +14,8 @@ import {
   View
 } from 'react-native';
 
-import Calculator from "./App/Calculator.js"
+import Calculator from "./App/Calculator.js";
+import Setting from './App/Settings.js';
 
 export default class PreworkCalculator extends Component {
   render() {
@@ -36,7 +37,7 @@ export default class PreworkCalculator extends Component {
                   />
 
                   <View style={{flexDirection:'column'}}>
-                    <Text>Oops Im a blank page</Text>
+                      <Setting />
                   </View>
 
                 </View>
