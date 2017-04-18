@@ -56,21 +56,21 @@ segmentValues(){
 render(){
     return(
       <View>
-        <View>
+        <View style={{alignItems: 'center',}}>
           <Text style={styles.baseText}>
           Tip Calculator
           </Text>
         </View>
         <View>
-          <Text> Bill amount</Text>
+          <Text style={styles.inputText}> Bill amount</Text>
           <TextInput
-            style={{ backgroundColor: '#ededed', height: 60 }}
+            style={{ backgroundColor: '#ededed', height: 30 }}
             onChangeText = {(billAmount) => this.handeBillAmountChange(billAmount)}
           />
         </View>
 
         <View>
-          <Text> Tip amount : 0 </Text>
+          <Text style={styles.inputText}> Tip amount : 0 </Text>
         </View>
         <View>
         <SegmentedControlTab
@@ -85,7 +85,7 @@ render(){
         </View>
 
         <View>
-          <Text>Result: {this.state.result}</Text>
+          <Text style = {styles.resultText}> Result: {this.state.result}</Text>
         </View>
 
       </View>
@@ -95,13 +95,18 @@ render(){
   }
 }
 const styles = StyleSheet.create({
-    baseText: {
-      fontFamily: 'Times New Roman',
-      fontSize: 40,
-    },
-    titleText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-  });
+  baseText: {
+    fontFamily: 'Times New Roman',
+    fontSize: 40,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  inputText: {
+    fontSize: 18,
+  },
+  resultText: {
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+});
 module.exports = Cal
