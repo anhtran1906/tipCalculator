@@ -69,7 +69,7 @@ render(){
         <View>
           <Text style={styles.inputText}> Tip amount : 0 </Text>
         </View>
-        <View>
+        <View style={{ paddingTop: 10 }}>
         <SegmentedControlTab
                  values={this.segmentValues()}
                  onTabPress={index => this.handleSegmentChange(index)}
