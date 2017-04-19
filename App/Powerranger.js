@@ -4,7 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
+  AsyncStorage,
   Navigator,
+  Button,
 } from 'react-native';
 
 import CustomNavBar from './CustomNavBar.js';
@@ -16,14 +18,14 @@ export default class PRanger extends Component{
   constructor(props){
     super(props);
     this.state = {
-      sceneTransition : null
+      transition : null
     }
   }
   // Render
   render(){
     return (
       <Navigator
-      initialRoute={{id: 'CalculatorPage', sceneTransition: 'FloatFromRight'}}
+      initialRoute={{id: 'CalculatorPage', transition: 'FloatFromRight'}}
       renderScene={this.renderScene.bind(this)}
       configureScene={(route) => {
         if (route.sceneConfig) {
@@ -58,7 +60,7 @@ export default class PRanger extends Component{
     this.getSceneTransition();
     console.log("transition", this.state.sceneTransition);
 
-    switch (this.state.sceneTransition) {
+    switch (this.state.transition) {
       case 'FloatFromLeft':
         return Navigator.SceneConfigs.FloatFromLeft;
         break;

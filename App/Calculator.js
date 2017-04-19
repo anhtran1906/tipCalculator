@@ -1,4 +1,3 @@
-import SegmentedControlTab from 'react-native-segmented-control-tab'
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -8,6 +7,7 @@ import {
   Button,
   TextInput
 } from 'react-native';
+import SegmentedControlTab from 'react-native-segmented-control-tab';
 
 export default class Cal extends Component{
   constructor(props){
@@ -69,7 +69,7 @@ render(){
         <View>
           <Text style={styles.inputText}> Tip amount : 0 </Text>
         </View>
-        <View style={{ paddingTop: 10 }}>
+        <View>
         <SegmentedControlTab
                  values={this.segmentValues()}
                  onTabPress={index => this.handleSegmentChange(index)}
