@@ -5,7 +5,7 @@ import {
   Text,
   View,
   Button,
-  TextInput
+  TextInput,
 } from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
@@ -50,6 +50,7 @@ handeBillAmountChange(bill,index){
 segmentValues(){
   return ["10%","15%","50%"];
 }
+
 render(){
     return(
       <View>
@@ -60,10 +61,13 @@ render(){
         </View>
         <View>
           <Text style={styles.inputText}> Bill amount</Text>
-          <TextInput
-            style={{ backgroundColor: '#ededed', height: 30 }}
-            onChangeText = {(billAmount) => this.handeBillAmountChange(billAmount)}
-          />
+          <TextInput style={{ backgroundColor: '#ededed', height: 30 }}
+            keyboardType={'numeric'}
+            maxLength = {10}
+            keyboardAppearance = 'dark'
+            onChangeText = {(billAmount) => this.handeBillAmountChange(billAmount)
+            }
+            />
         </View>
 
         <View>
