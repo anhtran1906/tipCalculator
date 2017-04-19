@@ -9,7 +9,7 @@ Time spent: **6** hours spent in total
 **Note** I have built this app on ios since I have a Mac. In order to run on Android, all you need to do is copy the index.ios.js file
 into index.android.js
 
-## Usage 
+## Usage
 
 Clone the project from git to your local repo
 
@@ -31,8 +31,8 @@ react-native run-ios
 The following **required** functionality is complete:
 
 * [X] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
-* [X] Settings page to change Scene Transition 
-* [X] Navigator integrate (keep it's simple) 
+* [X] Settings page to change Scene Transition
+* [X] Navigator integrate (keep it's simple)
 
 The following **optional** features are implemented:
 * [ ] UI animations
@@ -44,11 +44,11 @@ The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
 
-## Video Walkthrough 
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/XPct148.gif' title='Video Walkthrough Tip Calculator React native' width='' alt='Video Walkthrough Tip Calculator React native' />
+<img src='http://i.imgur.com/70Tp3CO.gif' title='Video Walkthrough Tip Calculator React native' width='' alt='Video Walkthrough Tip Calculator React native' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
