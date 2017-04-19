@@ -9,11 +9,13 @@ import {
   AsyncStorage,
   Picker
 } from 'react-native';
+
 export default class Setting extends Component{
   constructor(props){
     super(props);
     this.state = {
-
+      sceneTransition: 0,
+      scene: 0
     }
   }
 

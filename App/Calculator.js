@@ -20,13 +20,12 @@ export default class Cal extends Component{
 
     }
   }
-
 handleSegmentChange(index){
   this.setState({
     segmentSelectedIndex : index
   })
 
-  this.handeBillAmountChange(this.state.billAmount,index)
+  this.handeBillAmountChange(this.state.billAmount,index);
 }
 handeBillAmountChange(bill,index){
   this.setState({
@@ -47,9 +46,6 @@ handeBillAmountChange(bill,index){
     result: result,
     tipAmount : bill*percent
   })
-
-
-
 }
 segmentValues(){
   return ["10%","15%","50%"];
@@ -57,7 +53,7 @@ segmentValues(){
 render(){
     return(
       <View>
-        <View style={{alignItems: 'center',}}>
+        <View>
           <Text style={styles.baseText}>
           Tip Calculator
           </Text>
@@ -88,25 +84,16 @@ render(){
         <View>
           <Text style = {styles.resultText}> Result: {this.state.result}</Text>
         </View>
-        <View>
-          <Button
-            style={{flex:1, margin:5, fontSize:20}}
-            title="Setting"
-            onPress={() => this.props.navigator.push({id:'BlankPage'})}
-          />
-        </View>
-      </View>
-
-
-    )
-
+    </View>
+    );
   }
 }
 const styles = StyleSheet.create({
   baseText: {
-    fontFamily: 'Times New Roman',
+    fontFamily: 'Times',
     fontSize: 40,
     fontWeight: 'bold',
+    textAlign: 'center',
     marginTop: 20,
   },
   inputText: {
