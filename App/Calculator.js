@@ -6,6 +6,8 @@ import {
   View,
   Button,
   TextInput,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
@@ -50,10 +52,14 @@ handeBillAmountChange(bill,index){
 segmentValues(){
   return ["10%","15%","50%"];
 }
+dismissKeyboard() {
+        Keyboard.dismiss();
+}
 
 render(){
     return(
-      <View>
+      <TouchableWithoutFeedback onPress={()=>this.dismissKeyboard()}>
+      <View style={styles.container}>
         <View>
           <Text style={styles.baseText}>
           Tip Calculator
@@ -61,47 +67,54 @@ render(){
         </View>
         <View>
           <Text style={styles.inputText}> Bill amount</Text>
-          <TextInput style={{ backgroundColor: '#ededed', height: 30 }}
+          <TextInput style={{ backgroundColor: '#ededed', height: 30, marginTop: 10 }}
+            onChangeText = {(billAmount) => this.handeBillAmountChange(billAmount)}
             keyboardType={'numeric'}
             maxLength = {10}
             keyboardAppearance = 'dark'
-            onChangeText = {(billAmount) => this.handeBillAmountChange(billAmount)
-            }
+            placeholder="0"
+            autoFocus={true}
             />
         </View>
 
         <View>
-          <Text style={styles.inputText}> Tip amount : 0 </Text>
+          <Text style={styles.inputText}> Tip amount : {this.state.tipAmount} </Text>
         </View>
-        <View>
+        <View style={{height: 30, marginTop: 10}}>
         <SegmentedControlTab
                  values={this.segmentValues()}
                  onTabPress={index => this.handleSegmentChange(index)}
                  />
         </View>
-        <View>
+        <View style={{marginTop: 10}}>
           <Text> Bill input: {this.state.billAmount}</Text>
           <Text> Tip amount: {this.state.tipAmount}</Text>
-              <Text> Segment control: {this.segmentValues()[this.state.segmentSelectedIndex]}</Text>
+              <Text> Tip percentage: {this.segmentValues()[this.state.segmentSelectedIndex]}</Text>
         </View>
-
         <View>
           <Text style = {styles.resultText}> Result: {this.state.result}</Text>
         </View>
-    </View>
+        </View>
+     </TouchableWithoutFeedback>
     );
   }
 }
 const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    backgroundColor: '#f5fffa'
+  },
   baseText: {
-    fontFamily: 'Times',
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: 50,
+    opacity: 0.8
   },
   inputText: {
-    fontSize: 18,
+    height : 25,
+    fontSize: 20,
+    marginTop: 10,
   },
   resultText: {
     marginTop: 10,
