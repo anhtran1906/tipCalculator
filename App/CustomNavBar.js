@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   LeftButton,
   RightButton,
+  Keyboard,
   Title
 } from 'react-native';
 
@@ -25,14 +26,21 @@ var NavigationBarRouteMapper = {
   RightButton: (route, navigator, index, navState) => {
     if(route.id != 'CalculatorPage'){
       return (
-        <TouchableOpacity style={stylesCSS.tabbarHeadr} onPress={() => navigator.pop()}>
+        <TouchableOpacity style={stylesCSS.tabbarHeadr}
+          onPress={() => {
+            //navigator.refresh = true;
+            navigator.pop();}
+          }>
           <Text>Save</Text>
         </TouchableOpacity>
       );
     }
     else{
       return (
-        <TouchableOpacity style={stylesCSS.tabbarHeadr} onPress={() => navigator.push({id: 'SettingPage'})}>
+        <TouchableOpacity style={stylesCSS.tabbarHeadr} onPress={() => {
+          Keyboard.dismiss();
+          navigator.push({id: 'SettingPage'});}
+        }>
           <Text style={stylesCSS.headerFontSize}>Setting</Text>
         </TouchableOpacity>
       );

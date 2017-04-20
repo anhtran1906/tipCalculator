@@ -7,6 +7,10 @@ import {
   Button,
   TextInput,
   AsyncStorage,
+  Modal,
+  Slider,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
   Picker
 } from 'react-native';
 
@@ -15,7 +19,11 @@ export default class Setting extends Component{
     super(props);
     this.state = {
       sceneTransition: 0,
-      scene: 0
+      scene: 0,
+      //modalVisible: false,
+      // percent1: 10,
+      // percent2: 15,
+      // percent3: 50
     }
   }
 
@@ -57,12 +65,35 @@ export default class Setting extends Component{
   componentDidMount(){
     this.getSceneTransition();
   }
+  // onPercentagesChange(index, value) {
+  //       this.setState({["percent" + index]: value});
+  //   }
+  //
+  //   async setPercentages(index, value) {
+  //       try {
+  //           await AsyncStorage.setItem('PERCENT_' + index, String(value));
+  //       } catch (error) {
+  //           console.log(error);
+  //       }
+  //   }
+  //
+  //   async getPercentages() {
+  //       try {
+  //           for (let i = 1; i <= 3; i++) {
+  //               let value = await AsyncStorage.getItem("PERCENT_" + i);
+  //               this.setState({["percent" + i]: parseFloat(value)});
+  //           }
+  //       } catch (error) {
+  //           console.log(error);
+  //       }
+  //   }
   render(){
     return(
-      <View style={{marginTop:50,padding:10}}>
-        <View>
-          <Text style={{fontSize:25}}>Scene Transitions</Text>
+      <View>
+        <View style={styles.itemContainer}>
+          <Text style={styles.itemTitle}>Scene Transitions</Text>
           <Picker
+            style={styles.picker}
             selectedValue={this.state.sceneTransition}
             onValueChange={(scene) => this.setSelectSceneTransition(scene)}>
             <Picker.Item label="FloatFromRight" value="FloatFromRight" />
@@ -75,7 +106,40 @@ export default class Setting extends Component{
           </Picker>
         </View>
       </View>
-    )
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  itemContainer: {
+        borderBottomWidth: 1,
+        borderBottomColor: "lightgrey",
+  },
+  itemTitle: {
+    fontSize:20,
+    marginTop:50,
+  },
+  picker: {
+    marginLeft: 30,
+    marginTop: -10,
+  },
+  modalContainer: {
+       flex: 1,
+       justifyContent: "center",
+       padding: 20,
+       backgroundColor: "rgba(0,0,0,0.5)",
+   },
+   modalInnerContainer: {
+       borderRadius: 10,
+       padding: 20,
+       backgroundColor: '#fff',
+   },
+   slider: {
+       marginTop: 10,
+       marginBottom: 20,
+   },
+   lastSlider: {
+       marginTop: 10,
+   }
+});
 module.exports = Setting
