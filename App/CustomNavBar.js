@@ -28,7 +28,7 @@ var NavigationBarRouteMapper = {
       return (
         <TouchableOpacity style={stylesCSS.tabbarHeadr}
           onPress={() => {
-            //navigator.refresh = true;
+            navigator.refresh = true;
             navigator.pop();}
           }>
           <Text>Save</Text>

@@ -64,7 +64,6 @@ onPercentageChange(percent){
   }
   )
 }
-
 handlePercentageChange(percent){
   this.dismissKeyboard();
   if(!percent && percent != 10 ){
@@ -73,7 +72,44 @@ handlePercentageChange(percent){
   this.handleBillAmountChange(this.state.billAmount,percent);
 }
 
+async getPercentage(){
+  console.log("Percentage");
+  try{
+    let percent = await AsyncStorage.getItem('PERCENT_');
+    console.log(" " + percent);
+    if(percent){
+      this.setState({
+        percentage: percent 
+      });
+    }
+    else{
+      percent = parseFloat(this.state.percentage);
+      this.setPercentage(percent);
+    }
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+
+async setPercentage(percent){
+  try{
+    await AsyncStorage.setItem('PERCENT_', String(percent));
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+
+componentDidMount(){
+  this.getPercentage();
+}
+
 render(){
+  if (this.props.navigator.refresh) {
+           this.props.navigator.refresh = false;
+           this.getPercentage();
+  }
     return(
       <TouchableWithoutFeedback onPress={()=>this.dismissKeyboard()}>
       <View style={styles.container}>
@@ -85,7 +121,7 @@ render(){
         <View>
           <Text style={styles.inputText}> Bill amount</Text>
           <TextInput style={styles.inputAmount}
-            onChangeText = {(billAmount) => this.handleBillAmountChange(billAmount)}
+            onChangeText = {(billAmount) => this.handleBillAmountChange(billAmount,this.state.percentage)}
             keyboardType={'numeric'}
             maxLength = {10}
             keyboardAppearance = 'dark'

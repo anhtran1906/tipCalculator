@@ -16,6 +16,7 @@ Clone the project from git to your local repo
 Go to your local repo
 
 Write steps to run your project on locally
+
 **Install**
 ```
 npm install

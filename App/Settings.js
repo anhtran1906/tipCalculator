@@ -20,10 +20,7 @@ export default class Setting extends Component{
     this.state = {
       sceneTransition: 0,
       scene: 0,
-      //modalVisible: false,
-      // percent1: 10,
-      // percent2: 15,
-      // percent3: 50
+      percentage: 10
     }
   }
 
@@ -61,9 +58,36 @@ export default class Setting extends Component{
       console.log("Hmm, something when wrong when get data..." + error);
     }
   }
+
+  onPercentageChange(percent){
+    this.setState({
+      percentage: percent
+    })
+  }
+
+  async handlePercentageChange(percent){
+    try{
+      await AsyncStorage.setItem('PERCENT_', String(percent));
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
+  async getPercentage(){
+    try{
+      let percent = await AsyncStorage.getItem('PERCENT_');
+      this.setState({"percentage": parseFloat(percent)});
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
   // this method will be called when scene loaded
   componentDidMount(){
     this.getSceneTransition();
+    this.getPercentage();
   }
   render(){
     return(
@@ -82,6 +106,21 @@ export default class Setting extends Component{
             <Picker.Item label="HorizontalSwipeJump" value="HorizontalSwipeJump" />
             <Picker.Item label="HorizontalSwipeJumpFromRight" value="HorizontalSwipeJumpFromRight" />
           </Picker>
+        </View>
+
+        <View style ={styles.itemContainer}>
+        <Text style={styles.itemTitle}> Default percentage: {this.state.percentage}% </Text>
+        <Text style={{marginTop: 10}}> Slide to change </Text>
+        <Slider
+          style = {styles.slider}
+          percent={this.state.percentage}
+          minimumValue={0}
+          maximumValue={100}
+          step={5}
+          onValueChange={(percent) => this.onPercentageChange(percent)}
+          onSlidingComplete={(percent) => this.handlePercentageChange(percent)}
+        />
+
         </View>
       </View>
     );
