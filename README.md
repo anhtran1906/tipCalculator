@@ -35,14 +35,15 @@ The following **required** functionality is complete:
 * [X] Navigator integrate (keep it's simple)
 
 The following **optional** features are implemented:
-* [ ] UI animations
+* [X] UI animations
 * [ ] Settings page to change the default tip percentage.
 * [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
+* [X] Change the Segment control tab to a slider so users can easily change the tip percent
 
 ## Video Walkthrough
 
@@ -58,7 +59,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] [Anh Tran]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

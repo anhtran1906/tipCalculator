@@ -65,28 +65,6 @@ export default class Setting extends Component{
   componentDidMount(){
     this.getSceneTransition();
   }
-  // onPercentagesChange(index, value) {
-  //       this.setState({["percent" + index]: value});
-  //   }
-  //
-  //   async setPercentages(index, value) {
-  //       try {
-  //           await AsyncStorage.setItem('PERCENT_' + index, String(value));
-  //       } catch (error) {
-  //           console.log(error);
-  //       }
-  //   }
-  //
-  //   async getPercentages() {
-  //       try {
-  //           for (let i = 1; i <= 3; i++) {
-  //               let value = await AsyncStorage.getItem("PERCENT_" + i);
-  //               this.setState({["percent" + i]: parseFloat(value)});
-  //           }
-  //       } catch (error) {
-  //           console.log(error);
-  //       }
-  //   }
   render(){
     return(
       <View>
