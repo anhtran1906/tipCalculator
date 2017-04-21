@@ -37,12 +37,12 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 * [X] UI animations
-* [ ] Settings page to change the default tip percentage.
+* [X] Settings page to change the default tip percentage.
 * [ ] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
-* [X] Change the Segment control tab to a slider so users can easily change the tip percent
+* [X] Change the Segment control tab to a Slider so users can easily change the tip percent
 
 ## Video Walkthrough
 
