@@ -9,9 +9,12 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   AsyncStorage,
+  Animated,
   Slider,
 } from 'react-native';
-import SegmentedControlTab from 'react-native-segmented-control-tab';
+//import SegmentedControlTab from 'react-native-segmented-control-tab';
+import * as Animatable from 'react-native-animatable';
+
 
 export default class Cal extends Component{
   constructor(props){
@@ -22,6 +25,9 @@ export default class Cal extends Component{
       result: 0,
       tipAmount: 0,
       percentage: 10,
+      duration: 1000,
+      //fadeAnim: new Animated.Value(20), //opacity 0
+
     };
   }
 // handleSegmentChange(index){
@@ -64,6 +70,9 @@ onPercentageChange(percent){
   }
   )
 }
+handleDurationChange = (duration) => {
+   this.setState({ duration: Math.round(duration)});
+ };
 handlePercentageChange(percent){
   this.dismissKeyboard();
   if(!percent && percent != 10 ){
@@ -79,7 +88,7 @@ async getPercentage(){
     console.log(" " + percent);
     if(percent){
       this.setState({
-        percentage: percent 
+        percentage: percent
       });
     }
     else{
@@ -103,6 +112,13 @@ async setPercentage(percent){
 
 componentDidMount(){
   this.getPercentage();
+  // Animated.timing(
+  //   this.state.fadeAnim,
+  //   {
+  //     toValue: 1,
+  //     duration: 2000,
+  //   },
+  // ).start();
 }
 
 render(){
@@ -114,31 +130,35 @@ render(){
       <TouchableWithoutFeedback onPress={()=>this.dismissKeyboard()}>
       <View style={styles.container}>
         <View>
-          <Text style={styles.baseText}>
-          Tip Calculator
-          </Text>
+          <Animatable.Text style={styles.baseText} animation="zoomInUp" iterationCount={1} direction="alternate">Tip Calculator</Animatable.Text>
         </View>
         <View>
           <Text style={styles.inputText}> Bill amount</Text>
+
           <TextInput style={styles.inputAmount}
             onChangeText = {(billAmount) => this.handleBillAmountChange(billAmount,this.state.percentage)}
             keyboardType={'numeric'}
             maxLength = {10}
             keyboardAppearance = 'dark'
-            placeholder="0"
+            placeholder= '0'
             autoFocus={true}
             />
+
         </View>
 
         <View>
           <Text style={styles.inputText}> Tip percentage : {this.state.percentage}% </Text>
           <Text style={styles.inputText}> Tip amount : {this.state.tipAmount} </Text>
+
           <Slider
             style = {styles.slider}
             percent={this.state.percentage}
             minimumValue={0}
             maximumValue={100}
             step={5}
+            minimumTrackTintColor={'purple'}
+            maximumTrackTintColor={'violet'}
+
             onValueChange={(percent) => this.onPercentageChange(percent)}
             onSlidingComplete={(percent) => this.handlePercentageChange(percent)}
             />
