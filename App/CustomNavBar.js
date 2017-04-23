@@ -11,6 +11,8 @@ import {
   Keyboard,
   Title
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
+
 
 // export default class CustomNavBar extends Component{
 //   constructor(props){
@@ -41,7 +43,11 @@ var NavigationBarRouteMapper = {
           Keyboard.dismiss();
           navigator.push({id: 'SettingPage'});}
         }>
-          <Text style={stylesCSS.headerFontSize}>Setting</Text>
+        <Animatable.Text animation="pulse" easing="ease-out"
+        iterationCount="infinite" style={stylesCSS.headerFontSize}>
+        Setting
+        </Animatable.Text>
+
         </TouchableOpacity>
       );
     }

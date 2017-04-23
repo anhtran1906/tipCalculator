@@ -70,9 +70,6 @@ onPercentageChange(percent){
   }
   )
 }
-handleDurationChange = (duration) => {
-   this.setState({ duration: Math.round(duration)});
- };
 handlePercentageChange(percent){
   this.dismissKeyboard();
   if(!percent && percent != 10 ){
@@ -191,10 +188,10 @@ const styles = StyleSheet.create({
   },
   inputAmount:{
     backgroundColor: '#ededed',
-    height: 70,
+    height: 100,
     marginTop: 10,
     opacity: 0.8,
-    fontSize: 40,
+    fontSize: 60,
   },
   slider:{
     marginTop: 10,
