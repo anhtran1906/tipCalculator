@@ -26,7 +26,8 @@ export default class Cal extends Component{
       tipAmount: 0,
       percentage: 10,
       duration: 1000,
-      //fadeAnim: new Animated.Value(20), //opacity 0
+      fadeAnim: new Animated.Value(0), //opacity 0
+      splitNum: 1,
 
     };
   }
@@ -37,9 +38,10 @@ export default class Cal extends Component{
 //   })
 //   this.handleBillAmountChange(this.state.billAmount,index);
 // }
-handleBillAmountChange(bill,percent){
+handleBillAmountChange(bill,percent,number){
   this.setState({
-    billAmount : bill
+    billAmount : bill,
+    splitNum: number
   })
 
   // if(!index && index !=0){
@@ -50,7 +52,7 @@ handleBillAmountChange(bill,percent){
   //var percent = this.segmentValues()[index];
   var percent = percent
   percent = parseFloat(percent)/100; //0.1 0.5
-  var result = bill + (bill*percent);
+  var result = (bill + (bill*percent))/this.state.splitNum;
 
   this.setState({
     result: result,
@@ -75,7 +77,7 @@ handlePercentageChange(percent){
   if(!percent && percent != 10 ){
     percent: this.state.percentage;
   }
-  this.handleBillAmountChange(this.state.billAmount,percent);
+  this.handleBillAmountChange(this.state.billAmount,percent,this.state.splitNum);
 }
 
 async getPercentage(){
@@ -106,16 +108,40 @@ async setPercentage(percent){
     console.log(error);
   }
 }
+onSplitNumChange(number){
+  this.setState({
+      splitNum: number
+  }
+  )
+}
+
+handleSplitNumChange(number){
+  this.dismissKeyboard();
+  if(number && number != 1 ){
+    number: this.state.splitNum;
+  }
+  this.handleBillAmountChange(this.state.billAmount,this.state.percentage,number);
+
+}
+
+
+handlePercentageChange(percent){
+  this.dismissKeyboard();
+  if(!percent && percent != 10 ){
+    percent: this.state.percentage;
+  }
+  this.handleBillAmountChange(this.state.billAmount,percent,this.state.splitNum);
+}
 
 componentDidMount(){
   this.getPercentage();
-  // Animated.timing(
-  //   this.state.fadeAnim,
-  //   {
-  //     toValue: 1,
-  //     duration: 2000,
-  //   },
-  // ).start();
+  Animated.timing(
+    this.state.fadeAnim,
+    {
+      toValue: 5,
+      duration: 2000,
+    },
+  ).start();
 }
 
 render(){
@@ -133,7 +159,7 @@ render(){
           <Text style={styles.inputText}> Bill amount</Text>
 
           <TextInput style={styles.inputAmount}
-            onChangeText = {(billAmount) => this.handleBillAmountChange(billAmount,this.state.percentage)}
+            onChangeText = {(billAmount) => this.handleBillAmountChange(billAmount,this.state.percentage,this.state.splitNum)}
             keyboardType={'numeric'}
             maxLength = {10}
             keyboardAppearance = 'dark'
@@ -145,8 +171,11 @@ render(){
 
         <View>
           <Text style={styles.inputText}> Tip percentage : {this.state.percentage}% </Text>
-          <Text style={styles.inputText}> Tip amount : {this.state.tipAmount} </Text>
-
+        </View>
+        <Animated.View
+          style={{
+            opacity: this.state.fadeAnim,
+          }}>
           <Slider
             style = {styles.slider}
             percent={this.state.percentage}
@@ -159,7 +188,29 @@ render(){
             onValueChange={(percent) => this.onPercentageChange(percent)}
             onSlidingComplete={(percent) => this.handlePercentageChange(percent)}
             />
-        </View>
+          </Animated.View>
+
+          <View>
+            <Text style={styles.inputText}> Split among : {this.state.splitNum} </Text>
+          </View>
+          <Animated.View
+            style={{
+              opacity: this.state.fadeAnim,
+            }}>
+            <Slider
+              style = {styles.slider}
+              number={this.state.splitNum}
+              minimumValue={1}
+              maximumValue={10}
+              step={1}
+              minimumTrackTintColor={'purple'}
+              maximumTrackTintColor={'violet'}
+
+              onValueChange={(number) => this.onSplitNumChange(number)}
+              onSlidingComplete={(number) => this.handleSplitNumChange(number)}
+              />
+            </Animated.View>
+
 
       <View>
           <Text style = {styles.resultText}> Total bill: {this.state.result}</Text>
@@ -188,19 +239,19 @@ const styles = StyleSheet.create({
   },
   inputAmount:{
     backgroundColor: '#ededed',
-    height: 100,
+    height: 60,
     marginTop: 10,
     opacity: 0.8,
-    fontSize: 60,
+    fontSize: 40,
   },
   slider:{
-    marginTop: 10,
-    marginBottom: 20,
+    marginTop: 5,
+    marginBottom: 5,
   },
   resultText: {
-    marginTop: 10,
+    marginTop: 5,
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 30,
     opacity: 0.8
   },
 });
