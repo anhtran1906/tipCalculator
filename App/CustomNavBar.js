@@ -9,7 +9,8 @@ import {
   LeftButton,
   RightButton,
   Keyboard,
-  Title
+  Title,
+  Image
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -33,7 +34,10 @@ var NavigationBarRouteMapper = {
             navigator.refresh = true;
             navigator.pop();}
           }>
-          <Text>Save</Text>
+          <Image
+            style = {stylesCSS.icon}
+            source={require('./ic_done_3x.png')}
+          />
         </TouchableOpacity>
       );
     }
@@ -43,10 +47,11 @@ var NavigationBarRouteMapper = {
           Keyboard.dismiss();
           navigator.push({id: 'SettingPage'});}
         }>
-        <Animatable.Text animation="pulse" easing="ease-out"
-        iterationCount="infinite" style={stylesCSS.headerFontSize}>
-        Setting
-        </Animatable.Text>
+
+        <Image
+          style = {stylesCSS.icon}
+          source={require('./ic_settings_3x.png')}
+        />
 
         </TouchableOpacity>
       );
@@ -62,6 +67,12 @@ const stylesCSS = StyleSheet.create({
   },
   headerFontSize: {
     fontSize: 18,
+  },
+  icon: {
+    width: 25,
+    height: 25,
+    opacity: 0.5,
+    marginRight: 8.5
   },
 });
 // export this component

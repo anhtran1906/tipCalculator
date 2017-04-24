@@ -7,12 +7,12 @@ import {
   Button,
   TextInput,
   AsyncStorage,
-  Modal,
-  Slider,
   TouchableWithoutFeedback,
   TouchableOpacity,
   Picker
 } from 'react-native';
+import { Slider } from 'react-native-elements'
+
 
 export default class Setting extends Component{
   constructor(props){
@@ -110,13 +110,15 @@ export default class Setting extends Component{
 
         <View style ={styles.itemContainer}>
         <Text style={styles.itemTitle}> Default percentage: {this.state.percentage}% </Text>
-        <Text style={{marginTop: 10}}> Slide to change </Text>
         <Slider
           style = {styles.slider}
           percent={this.state.percentage}
           minimumValue={0}
-          maximumValue={100}
+          maximumValue={30}
           step={5}
+          minimumTrackTintColor={'violet'}
+          trackStyle = {styles.track}
+          thumbStyle = {styles.thumb}
           onValueChange={(percent) => this.onPercentageChange(percent)}
           onSlidingComplete={(percent) => this.handlePercentageChange(percent)}
         />
@@ -140,23 +142,21 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: -10,
   },
-  modalContainer: {
-       flex: 1,
-       justifyContent: "center",
-       padding: 20,
-       backgroundColor: "rgba(0,0,0,0.5)",
-   },
-   modalInnerContainer: {
-       borderRadius: 10,
-       padding: 20,
-       backgroundColor: '#fff',
-   },
    slider: {
        marginTop: 10,
        marginBottom: 20,
    },
-   lastSlider: {
-       marginTop: 10,
-   }
+   track: {
+     height: 1,
+     backgroundColor: '#303030',
+   },
+   thumb: {
+     width: 10,
+     height: 10,
+     backgroundColor: 'rgba(200, 150, 150, 0.3)',
+     borderColor: 'rgba(200, 150, 150, 0.6)',
+     borderWidth: 15,
+     borderRadius: 30,
+   },
 });
 module.exports = Setting

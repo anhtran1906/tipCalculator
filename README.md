@@ -4,18 +4,18 @@
 
 Submitted by: **Anh Tran**
 
-Time spent: **6** hours spent in total
+Time spent: **16** hours spent in total
 
 **Note** I have built this app on ios since I have a Mac. In order to run on Android, all you need to do is copy the index.ios.js file
 into index.android.js
 
 ## Usage
 
-Clone the project from git to your local repo
+- Clone the project from git to your local repo
 
-Go to your local repo
+- Go to your local repo
 
-Write steps to run your project on locally
+- Follow these steps to run your project locally
 
 **Install**
 ```
@@ -37,7 +37,7 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 * [X] UI animations:
-  - Added easing-out animation to the Setting button so users can notice it better
+  - Added easing-in animation for the sliders on the front page
 * [X] Settings page to change the default tip percentage.
 * [ ] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
@@ -45,18 +45,22 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 * [X] Change the Segment control tab to a Slider so users can easily change the tip percent
 * [X] Add the Split slider for users to split their bills among 1-10 people
+* [X] Replace the Setting and Save buttons and Split Slider with icons
+* [X] Minimize words on the app for better UI/UX
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/jQaXEbZ.gif' title='Video Walkthrough Tip Calculator React native' width='' alt='Video Walkthrough Tip Calculator React native' />
+<img src='http://i.imgur.com/Tbtv1co.gif' title='Video Walkthrough Tip Calculator React native' width='' alt='Video Walkthrough Tip Calculator React native' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Still looking for better ways to implement Animations for the AppRegistry
+- Cannot figure out how to change local currency for the app
+- Having trouble setting up the Android dev environment on Mac
 
 ## License
 
