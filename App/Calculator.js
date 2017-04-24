@@ -10,10 +10,11 @@ import {
   Keyboard,
   AsyncStorage,
   Animated,
-  Slider,
+  Slider
 } from 'react-native';
 //import SegmentedControlTab from 'react-native-segmented-control-tab';
 import * as Animatable from 'react-native-animatable';
+
 
 
 export default class Cal extends Component{
@@ -124,7 +125,6 @@ handleSplitNumChange(number){
 
 }
 
-
 handlePercentageChange(percent){
   this.dismissKeyboard();
   if(!percent && percent != 10 ){
@@ -184,7 +184,6 @@ render(){
             step={5}
             minimumTrackTintColor={'purple'}
             maximumTrackTintColor={'violet'}
-
             onValueChange={(percent) => this.onPercentageChange(percent)}
             onSlidingComplete={(percent) => this.handlePercentageChange(percent)}
             />
@@ -205,12 +204,10 @@ render(){
               step={1}
               minimumTrackTintColor={'purple'}
               maximumTrackTintColor={'violet'}
-
               onValueChange={(number) => this.onSplitNumChange(number)}
               onSlidingComplete={(number) => this.handleSplitNumChange(number)}
               />
             </Animated.View>
-
 
       <View>
           <Text style = {styles.resultText}> Total bill: {this.state.result}</Text>
@@ -255,4 +252,21 @@ const styles = StyleSheet.create({
     opacity: 0.8
   },
 });
+var customStyles7 = StyleSheet.create({
+  track: {
+   height: 1,
+   backgroundColor: '#303030',
+ },
+ thumb: {
+   width: 10,
+   height: 10,
+   backgroundColor: 'rgba(150, 150, 150, 0.3)',
+   borderColor: 'rgba(150, 150, 150, 0.6)',
+   borderWidth: 9,
+   borderRadius: 15,
+ }
+});
+
+
+
 module.exports = Cal

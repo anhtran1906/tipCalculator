@@ -36,19 +36,21 @@ The following **required** functionality is complete:
 * [X] Navigator integrate (keep it's simple)
 
 The following **optional** features are implemented:
-* [X] UI animations
+* [X] UI animations:
+  - Added easing-out animation to the Setting button so users can notice it better
 * [X] Settings page to change the default tip percentage.
 * [ ] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 * [X] Change the Segment control tab to a Slider so users can easily change the tip percent
+* [X] Add the Split slider for users to split their bills among 1-10 people
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/9dO98rD.gif' title='Video Walkthrough Tip Calculator React native' width='' alt='Video Walkthrough Tip Calculator React native' />
+<img src='http://i.imgur.com/jQaXEbZ.gif' title='Video Walkthrough Tip Calculator React native' width='' alt='Video Walkthrough Tip Calculator React native' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
